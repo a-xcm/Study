@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<!-- 导入Vue的包 -->
+		<script src="./lib/vue.js"></script>
+		<link rel="stylesheet" href="./lib/bootstrap.css">
+	</head>
+
+	<body>
+
+		<div id="app">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title"></h3>
+				</div>
+				<div class="panel-body form-inline">
+					<label>Id：
+						<input type="text" class="form-control" v-model="id" />
+					</label>
+					<label>Name：
+						<input type="text" class="form-control" v-model="name" @keyup.f2="add" />
+					</label>
+					<button type="button" class="btn btn-primary" @click="add">添加</button>
+					<label>搜索名称关键字：
+						<!-- 注意 ：Vue中所有的指令，在调用的时候都是v- -->
+						<input type="text" class="form-control" v-model="keywords" v-focus v-color="'blue'">
+					</label>
+				</div>
+			</div>
+
+			<table class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Ctime</th>
+						<th>Operation</th>
+					</tr>
+				</thead>
+				<tr v-for="item in serach(keywords)" :key="item.id">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.ctime | dateFormat}}</td>
+					<td>
+						<a href="" @click.prevent="del(item.id)">删除</a>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+
+		<div id="app2">
+			<p v-color="'red'" v-fontweight="900" v-fontsize="'30px'">当前时间：{{ dt | dateFormate }}</p>
+		</div>
+		<script>
+			//定义全局过滤器,事件格式化
+			Vue.filter('dateFormat', function(dateStr, pattern = '') {
+				var dt = new Date(dateStr)
+				var y = dt.getFullYear()
+				var m = (dt.getMonth() + 1).toString().padStart(2, '0')
+				var d = dt.getDate().toString().padStart(2, '0')
+				var hh = dt.getHours().toString().padStart(2, '0')
+				var mm = dt.getMinutes().toString().padStart(2, '0')
+				var ss = dt.getSeconds().toString().padStart(2, '0')
+				if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+					return `${y}-${m}-${d}`
+				} else {
+					return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+				}
+			})
+
+			//自定义全局按键修饰符
+			Vue.config.keyCodes.f2 = 113
+
+			//自定义全局指令 Vue.directive
+			//其中参数1:指令的名称,注意在定义的时候指令名称前，不需要加v- 前缀,
+			//但是调用的时候，必须在指令名称前面加上v-前缀
+			//参数2:是一个对象,这个对象身上,有一些指令相关的函数,这些函数可以在特定的阶段,执行相关的操作
+			Vue.directive('focus', {
+				//注意:每个函数中,第一个参数,永远都是el,表示被绑定指令的元素,这个el是一个原生的JS对象,有原生dom的方法
+				bind: function(el) {//每当指令绑定到元素上的时候,立即执行bind函数,只执行一次
+					//在元素 刚绑定时,还没有插入到Dom中,这个时候调用focus 没有作用
+					// 因为一个元素只有插入到dom之后,才能获取焦点
+					//el.focus()
+				},
+				inserted: function(el){//表示元素插入到DOM中的时候,会执行 inserted 函数 触发一次
+					el.focus()
+					//和JS行为有关的操作,做好放到inserted 中去执行,防止JS行为不生效
+				},
+				updated:function(el){//当VNode 更新时,会触发updated,可能会触发多次
+				}
+			})
+			Vue.directive('color',{
+				//样式,只要通过指令绑定给了元素,不管元素是否被插入到页面,这个元素肯定有一个内联样式
+				//将来元素显示到页面中,浏览器就会解析样式,应用到元素
+				bind:function(el,binding){
+					// el.style.color = 'red'
+					//和样式相关的操作,一般可以在bind中操作
+					// console.log(binding)
+					// console.log(binding.value)
+					// console.log(binding.expression)
+					el.style.color = binding.value
+				}
+			})
+
+			//创建 Vue 实例,得到 ViewModel
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					id: '',
+					name: '',
+					keywords: '',
+					list: [{
+							id: 1,
+							name: '宝马',
+							ctime: new Date()
+						},
+						{
+							id: 2,
+							name: '奔驰',
+							ctime: new Date()
+						}
+					]
+				},
+
+				methods: {
+
+					serach(keywords) {
+						// var newList = []
+						/*	this.list.forEach(item=>{
+								if(item.name.indexOf(keywords) != -1){
+									newList.push(item)
+								}
+							})
+							return newList */
+
+						//注意: forEach some filter findIndex
+						return this.list.filter(item => {
+							//ES6新方法 为字符串提供了一个新方法 String.prototype.includes('要包含的字符串')
+							//如果包含返回 true 否则返回false
+							if (item.name.includes(keywords)) {
+								return item
+							}
+						})
+					},
+
+					add() {
+						this.list.push({
+							id: this.id,
+							name: this.name,
+							ctime: new Date()
+						})
+						this.id = this.name = ""
+					},
+					del(id) {
+						//根据id获取索引
+						/*	this.list.some((item,i)=>{
+								if(item.id == id){
+									this.list.splice(i,1)
+									return true;
+								}
+							})
+						*/
+						var index = this.list.findIndex((item) => {
+							if (item.id == id) {
+								return true;
+							}
+						})
+						//console.log(index)
+						this.list.splice(index, 1)
+					}
+				}
+			})
+
+			var vm2 = new Vue({
+				el: '#app2',
+				data: {
+					dt: new Date()
+				},
+				mounted: function() {
+					this.timer = setInterval(() => {
+						this.dt = new Date();
+					}, 1000)
+				},
+				directives:{
+					'fontweight':{
+						bind:function(el,binding){
+							el.style.fontWeight = binding.value
+						}
+					},
+					'fontsize':function(el,binding){//注意这个function等同于把代码写到了bind和update中去
+						el.style.fontSize = parseInt(binding.value)+'px'
+					}
+				},
+				methods: {},
+				filters: {
+					dateFormate(dateStr, pattern = '') {
+						var dt = new Date(dateStr)
+						var y = dt.getFullYear()
+						var m = (dt.getMonth() + 1).toString().padStart(2, '0')
+						var d = dt.getDate().toString().padStart(2, '0')
+						var hh = dt.getHours().toString().padStart(2, '0')
+						var mm = dt.getMinutes().toString().padStart(2, '0')
+						var ss = dt.getSeconds().toString().padStart(2, '0')
+						if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+							return `${y}-${m}-${d}`
+						} else {
+							return `${y}-${m}-${d} ${hh}:${mm}:${ss} ---`
+						}
+
+					}
+				},
+				destroyed() {
+					if (this.timer) {
+						clearInterval(this.timer)
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>
