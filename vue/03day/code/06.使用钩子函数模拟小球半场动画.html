@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<!-- 导入Vue的包 -->
+		<script src="./lib/vue.js"></script>
+		<style type="text/css">
+			.ball {
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="点击动起来" @click="flag=!flag" />
+			<transition 
+			@before-enter="beforeEnter" 
+			@enter="enter" 
+			@after-enter="afterEnter">
+				<div class="ball" v-show="flag"></div>
+			</transition>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					flag: false
+				},
+				methods: {
+					//注意：动画钩子函数的第一个参数：el,表示要执行动画的那个Dom元素，是个原生JS DOM对象
+					beforeEnter(el) {
+						// beforeEnter 表示动画入场之前，此时，动画尚未开始，可以在 beforeEnter 中设置元素开始动画之前的起始样式
+						// 设置小球开始之前的，起始位置
+						el.style.transform = "translate(0,0)";
+					},
+					//当只用 JavaScript 过渡的时候，在 enter 和 leave 中必须使用 done 进行回调。否则，它们将被同步调用，过渡会立即完成。
+					enter(el,done) {
+						//触发重排冲毁
+						 el.offsetHeight;
+						// enter 表示动画开始之后的样式，这里可以设置小球完成动画之后的，结束状态
+						el.style.transform = "translate(150px,450px)";
+						el.style.transition= 'all 1s ease';
+						console.log(el.style.transform);
+						
+						//这里的done，其实就是 afterEnter 这个函数，也就是说：done 是 afterEnter 函数的引用
+						done()
+					},
+					afterEnter(el){
+						//动画完成之后，会调用afterEnter
+						this.flag = !this.flag;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

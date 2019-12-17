@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<!-- 导入Vue的包 -->
+		<script src="./lib/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<mycom3></mycom3>
+		</div>
+		
+		
+		<div id="app2">
+			<login></login>
+		</div>
+		
+		
+		<template id="tmp1">
+			<div>
+				<h4>这是通过 template 元素，在外部定义的组件结构，有代码提示和高亮</h4>
+				<h5>好用</h5>
+			</div>
+		</template>
+		<template id="tmp2">
+			<h1>这是一个私有的 login 组件</h1>
+		</template>
+		<script>
+			Vue.component('mycom3', {
+				template: '#tmp1'
+			})
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {}
+			})	
+			var vm2 = new Vue({
+				el: '#app2',
+				data: {},
+				methods: {},
+				filters:{},
+				directives:{},
+				components:{
+					login:{
+						template:'#tmp2'
+					}
+				},
+				
+				beforeCreate() {},
+				created() {},
+				beforeMount(){},
+				mounted() {},
+				beforeUpdate() {},
+				updated() {},
+				beforeDestroy() {},
+				destroyed() {}
+			})
+		</script>
+	</body>
+</html>
