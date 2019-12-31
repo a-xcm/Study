@@ -140,7 +140,7 @@ const arr = [
     { id: 2, name: 'rock' }, 
     { id: 3, name: 'poly' }
 ];
-arr.find((item, index, array) => {
+arr.findIndex((item, index, array) => {
     return item.id > 1;
 });
 // 1
