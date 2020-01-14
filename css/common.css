@@ -1,0 +1,32 @@
+/* 基本css样式 */
+@charset "utf-8";
+
+html,body,div,span,form,table,tbody,thead,tr,th,td,ul,li,input,p,h1,h2,h3,h4,h5,h6 {padding: 0;margin: 0;}
+ul,li,ol,dl,dt,dd {list-style: none;}
+a {color: inherit;text-decoration: none;cursor: pointer;}
+button,input,select {vertical-align: middle;}
+button {cursor: pointer;}
+img {border: 0; vertical-align: top;}
+
+table {
+  width:100%;
+  border-collapse: collapse;
+  border-spacing:0;
+  font-size:inherit;
+}
+table th,table td{
+  padding:5px;
+}
+
+.clearfix::after{ clear: both; content: ""; display: block; overflow: hidden }
+.clear{clear: both;}
+.fl{ float: left; }
+.fr{float: right;}
+
+.none {display: none}
+.block {display: block}
+.inline-block{display: inline-block}
+
+input[type="checkbox"],input[type="radio"]{
+  vertical-align: middle;
+  }
