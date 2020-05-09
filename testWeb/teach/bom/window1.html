@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+<script  src="../obj/DateUtil.js"></script>
+<script>
+var n = 0;
+var nn = null;
+    function fn() {
+        console.log(formatDate(new Date()));
+        n++;
+        if (n==20){
+            clearInterval(nn);
+        }
+    }
+    //表示隔2秒执行一次
+    setTimeout(fn,2000);
+    //每1秒执行一次,
+nn = setInterval(fn,1000);
+</script>
+</body>
+</html>

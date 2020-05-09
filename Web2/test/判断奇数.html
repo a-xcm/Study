@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="div1">
+			判断是否是奇数
+
+		</div>
+		<input id="input1" type="text" />
+		<button tcype="button" id="btn">确认</button>
+		<script type="text/javascript">
+			var input1 = document.getElementById('input1');
+			var div1 = document.getElementById('div1');
+			var btn = document.getElementById('btn');
+			btn.onclick=fn1;
+			document.onkeydown = function(ev) {
+				var keycode = ev.which;
+				var realkey = String.fromCharCode(ev.which);
+				//alert(keycode + ":" + realkey + ":" + ev.key);
+
+				if(keycode == 13){
+					fn1();
+				}
+
+			}
+			var pattern = /\d+/;
+			function fn1() {
+				var value = input1.value;
+				if(pattern.test(value)) {						
+					alert((value & 1) == 1);
+				} else{
+					alert('重新输入');
+				}
+			}
+		</script>
+	</body>
+
+</html>

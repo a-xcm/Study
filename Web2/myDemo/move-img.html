@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘事件</title>
+	</head>
+
+	<body>
+		<div id="div1" style="width: 1500px;margin: auto;">
+			<img src="img/case_pic1.png" />
+			<img src="img/case_pic2.png" />
+			<img src="img/case_pic3.png" />
+			<img src="img/case_pic4.png" />
+			<img src="img/case_pic5.png" />
+			<img src="img/case_pic6.png" />
+			<img src="img/case_pic7.png" />
+			<img src="img/case_pic8.png" />
+		</div>
+	
+	</body>
+
+	<script>
+	    var img = document.getElementsByTagName('img');
+		var i = 0;//img.item(i)					
+		document.onkeydown = function(event) {		
+			var e = event || window.event || arguments.callee.caller.arguments[0];			
+			if(e && e.keyCode == 38 && i > 3 ) { //上,
+				img.item(i-4).style='border:2px solid red';
+				img.item(i).style='0';
+				i -= 4;
+//				alert('38=上键');
+			}else if(e && e.keyCode == 37 && i > 0){				
+//				alert('37=左键');
+				img.item(i).style='0';
+				img.item(i-1).style='border:2px solid red';
+				i--;
+			}else if(e && e.keyCode == 40 && i < 4) { //下,右
+//				alert('40=下键');
+				img.item(i).style='0';
+				img.item(i+4).style='border:2px solid red';
+				i += 4;
+			}else if(e && e.keyCode == 39 && i < 7){
+//				alert('40=右键');
+				img.item(i).style='0';
+				img.item(i+1).style='border:2px solid red';
+				 i++;
+			}
+			
+		};
+//      添加新的html标签
+//		var p = document.createElement('p');
+//		p.innerText='123456';
+//		document.getElementById("div1").appendChild(p);
+		
+		window.onload=function(){
+			img.item(0).style='border:2px solid red';
+		}
+	</script>
+
+</html>

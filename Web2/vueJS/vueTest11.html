@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>v-on点击反序</title>
+		<script src="vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>v-on点击反序字符串</h1>
+			<p>{{message}}</p>
+			<button v-on:click=" reversedMessage">点击反序</button>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				message: 'abcdefghijklmnopqrstuvwxyz'
+			},
+			methods: {
+				reversedMessage: function() {
+					this.message = this.message.split("").reverse().join("")
+				}
+			}
+		})
+	</script>
+
+</html>

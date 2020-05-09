@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环嵌套</title>
+</head>
+<body>
+    <script>
+
+        var str = "";
+        for(var i = 0; i < 4; i++){//外层循环表示行
+            for (var j = 0; j < 5; j++ ){//内层循环表示列
+              str = str + "*\t";
+            }
+            str = str + "\n";
+        }
+        console.log(str);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自执行函数</title>
+</head>
+<body>
+<script>
+
+    (function (a) {
+        console.log("匿名函数" + a)
+    })(2);
+
+    function fn() {
+
+        function ff() {//内部函数，只能在当前函数内调用
+            console.log("内部函数");
+        }
+
+        return function () {
+            console.log("返回函数");
+        }
+    }
+
+    fn()();
+
+
+    function fff() {
+        console.log("返回函数2");
+    }
+
+    function ffn() {
+        return fff;
+    }
+
+    function ffn1() {
+        return fff();
+    }
+
+    console.log(ffn());
+    console.log(typeof  ffn());//function 类型
+    console.log(ffn1());//返回fff函数的返回值，undefined
+
+</script>
+</body>
+</html>

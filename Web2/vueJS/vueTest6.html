@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-model</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+			<input type="checkbox" id="zu" value="足球" v-model="checkedNames"/>足球
+			<input type="checkbox" id="lan" value="蓝球" v-model="checkedNames"/>篮球
+			<input type="checkbox" id="pai" value="排球" v-model="checkedNames"/>排球
+			<br />
+			<span>爱好：{{checkedNames}}</span>
+		</div>
+		
+	</body>
+	<script>
+		
+		new Vue({
+			el:'#app',
+			data:{
+				checkedNames:[],
+			}
+		})
+	</script>
+	
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归</title>
+</head>
+<body>
+<script>
+    /**
+     * 求1~n的和
+     */
+    function fn(n) {
+        if (n == 1){
+            return 1;
+        }
+        return fn(n-1)+n;
+    }
+    console.log(fn(100));
+</script>
+</body>
+</html>

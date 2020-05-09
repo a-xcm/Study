@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逻辑控制语句</title>
+</head>
+<body>
+    <script>
+        /**
+         * if
+         * if ....else
+         * if ....else if  ......else
+         */
+        var a = 1;
+        var b = 2;
+        //输出 a 和 b 中较大的一个值
+        if (a > b) {
+            console.log(a);
+        } else {
+            console.log(b);
+        }
+
+
+        //a = 1 b = 2 c = 3 用if else 语句输出最大值
+        var a = 1;
+        var b = 2;
+        var c = 3;
+        //输出最大值
+        if (a > b) {
+            if (a > c) {
+                console.log(a);
+            } else {
+                console.log(c);
+            }
+        } else {
+            if (b > c) {
+                console.log(b);
+            } else {
+                console.log(c);
+            }
+        }
+        if (a > b && a > c) {
+            console.log(a);
+        } else if (b > a && b > c) {
+            console.log(b);
+        } else {
+            console.log(c);
+        }
+        /**
+         * switch
+         */
+        var x = 5;
+        switch (x) {
+            case 1 :
+                console.log("周一");
+                break;
+            case 2 :
+                console.log("周二");
+                break;
+            case 3 :
+                console.log("周三");
+                break;
+            case 4 :
+                console.log("周四");
+                break;
+            case 5 :
+                console.log("周五");
+                break;
+            case 6 :
+                console.log("周六");
+                break;
+            case 7 :
+                console.log("周日");
+                break;
+        }
+
+    </script>
+</body>
+</html>

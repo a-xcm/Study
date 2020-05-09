@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+</head>
+<body >
+
+<script>
+    /*
+     * addEventListener:通过js直接为元素添加事件
+     * 使用document调用表示对整个文档添加某个事件
+     * 还可以使用element调用，表示对对应的元素添加某个事件
+     * 注意：IE8以下不是使用addEventListener()方法，Opera7.0及以下也不支持
+     * 对于这些不支持的，可使用attachEvent()方法添加事件句柄
+     *
+     *
+     *
+     *addEventListener
+     *参数：
+     *      三个参数
+     *      一：表示事件名称，注意：不包含on
+     *      二：事件触发的方法，默认有参数，第一个参数为event对象
+     *      三：表示使用事件冒泡还是事件捕获（默认事件冒泡）
+     *
+     */
+   addEventListener("keydown",function (ev) {
+       var keycode = ev.which;
+       var realkey = String.fromCharCode(ev.which);
+       //alert(keycode+":"+realkey+":"+ev.key);
+
+       if(ev.key=="C"&& ev.shiftKey&&ev.ctrlKey){
+           alert("ctrl+shift+c快捷键");
+       }
+   });
+</script>
+</body>
+
+</html>

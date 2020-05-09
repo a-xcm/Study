@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对应选项对应logo</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            width: 350px;
+            height: 30px;
+            padding: 5px;
+            margin: 20px auto;
+            background: url("images/a.jpg")  #eee;
+        }
+
+        ul li {
+            list-style: none;
+            height: 25px;
+            line-height: 30px;
+            padding: 5px;
+            display: inline;
+        }
+
+        a {
+            text-decoration: none;
+            color: #aaa;
+        }
+
+        #div {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            text-align: center;
+            background: white;
+        }
+a:hover{
+    color: black;
+}
+        li:hover {
+            border: 1px solid #ccc;
+            border-top-color: blue;
+            border-bottom: none;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul id="ulid">
+    <li><a href="#" id="1">爱奇艺</a></li>
+    <li><a href="#" id="2">芒果TV</a></li>
+    <li><a href="#" id="3">搜狐</a></li>
+    <li><a href="#" id="4">腾讯</a></li>
+    <li><a href="#" id="5">PP视频</a></li>
+</ul>
+
+<div id="div"></div>
+<script>
+
+    document.getElementById("ulid").addEventListener("mousemove", function (ev) {
+        var aid = ev.target.id;
+        var div = document.getElementById("div");
+        if (aid == 1) {
+            div.innerHTML = "<img src='images/aqy.jpg'/>";
+        }
+        if (aid == 2) {
+            div.innerHTML = "<img src='images/mg.jpg'/>";
+        }
+        if (aid == 3) {
+            div.innerHTML = "<img src='images/sh.jpg'/>";
+        }
+        if (aid == 4) {
+            div.innerHTML = "<img src='images/tx.jpg'/>";
+        }
+        if (aid == 5) {
+            div.innerHTML = "<img src='images/pptv.jpg'/>";
+        }
+        document.body.appendChild(div);
+    });
+
+</script>
+</body>
+</html>

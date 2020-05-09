@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+	<title>Tree</title>
+	<link rel="stylesheet" href="jquery.treeview.css" />
+	<link rel="stylesheet" href="screen.css" />
+	<script src="jquery.js"></script>
+	<script src="jquery.cookie.js"></script>
+	<script src="jquery.treeview.js"></script>
+
+	<script type="text/javascript">$(document).ready(function() {
+	$("#browser").treeview({
+		toggle: function() {
+			console.log("%s was toggled.",
+				$(this).find(">span").text());
+		}
+	});
+});</script>
+	
+	
+	</head>
+	<body>
+		
+		
+	<h1 id="banner">jQuery Treeview 实例</h1>
+	<div id="main">
+	<ul id="browser" class="filetree treeview-famfamfam">
+		<li><span class="folder">四川长江职业学院</span>
+			<ul>
+				<li><span class="folder">鼎利学院</span>
+					<ul>
+						<li><span class="folder">大一</span>
+							<ul>
+								<li><span class="folder">软件技术</span></li>
+								<li><span class="folder">通信技术</span></li>
+							</ul>
+						</li>
+						<li><span class="folder">大二</span>
+							<ul>
+								<li><span class="folder">软件技术</span>
+									<ul>
+										<li><span class="folder">一班</span>
+											<ul>
+												<li><span class="folder">火山组</span>
+													<ul>
+														<li><span class="file">谢陈鸣</span></li>
+														<li><span class="file">王灿</span></li>
+														<li><span class="file">徐靖皓</span></li>
+														<li><span class="file">刘旭</span></li>
+														<li><span class="file">胡梦蝶</span></li>
+													</ul>
+												</li>
+											</ul>									
+										</li>
+										<li><span class="folder">二班</span>
+											<ul>
+												<li><span class="folder">呱唧</span>
+													<ul>
+														<li><span class="file">tony</span></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li><span class="folder">三班</span></li>
+										<li><span class="folder">四班</span></li>
+									</ul>
+								</li>
+								<li><span class="folder">通信技术</span></li>
+								<li><span class="folder">电商技术</span></li>
+							</ul>
+						</li>
+					</ul>
+				
+				</li>
+				<li><span class="folder"></span></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+</body>
+</html>

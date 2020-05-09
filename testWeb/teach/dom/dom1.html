@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的dom操作</title>
+</head>
+<body>
+
+<!--
+ action属性：表示表单参数提交的地址
+ method属性：只有两个值，get、post
+            get提交，参数在url上可以看见
+            post提交，参数在url上看不见（可以通过浏览器的开发者工具查看）
+  表单提交后，页面会跳转到action指定的url
+ -->
+<form action="dom.html" method="get">
+
+    <!--
+     name：表示传送给后台的数据的参数名称
+     value：表示传送给后台的对应参数对应的值(value属性一般是不定义的，一般是由用户输入的)
+            value 属性一般用在修改的时候，设置修改前的值
+      readonly：表示只读，表示当前输入框不能修改
+      disabled：表示readOnly 并且，输入框变灰
+     -->
+    <label>姓名：</label>
+    <input type="text" name="name" value="" placeholder="请输入姓名"/>
+    <label>爱好：</label>
+    <!--
+    checked="checked"：表示默认选中
+    name：如果是同一参数，name属性必须一致
+    -->
+    <input type="checkbox" name="fav" value="1" checked="checked"/><label>睡觉</label>
+    <input type="checkbox" name="fav" value="2"/><label>打游戏</label>
+    <input type="checkbox" name="fav" value="3"/><label>吃泡面</label>
+
+    <label>学历：</label>
+    <select name="edu">
+        <option value="1">幼儿园</option>
+        <option value="2">小学</option>
+        <option value="3">初中</option>
+        <option value="4">高中</option>
+        <option value="5">大专</option>
+        <option value="6">本科</option>
+        <option value="7">硕士</option>
+        <option value="8">博士</option>
+    </select>
+    <hr/>
+    <button type="submit" onclick="return commit()">提交</button>
+</form>
+
+<script>
+
+    /**
+     * 表单验证方法
+     *  当验证为真，返回true，表示通过，表单会提交
+     *  当验证结果为假，返回false，表示不通过，表单不会提交
+     */
+    function commit() {
+
+        // el.value 表示获取当前el对象的value属性的值
+        var name = document.getElementsByName("name")[0].value;
+
+        if (!/^[\一-\龥]{1,15}$/.test(name)) {
+            alert("请输入汉字！");
+            return false;
+        }
+
+        // 复选框一般验证的时候判断，选还是没有选
+        var favArr = document.getElementsByName("fav");
+        var len = favArr == undefined ? 0 : favArr.length;
+        var flag = false;
+        for (var i = 0; i < len; i++) {
+            if (favArr[i].checked == true) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag == false) {
+            alert("请选择爱好");
+            return false;
+        }
+        var edu = document.getElementsByName("edu")[0];
+        if(edu.value==undefined){
+            alert("请选择学历");
+            return  false;
+        }
+
+            return true;
+    }
+
+</script>
+
+</body>
+</html>

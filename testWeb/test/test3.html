@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环打出*三角</title>
+</head>
+<body>
+<script>
+    /**
+     *正三角形
+     *
+     */
+    var str = "";
+    var cols = 4;//行
+    for (var i = 0; i < cols; i++) {
+        for (var k = 0; k < cols - i; k++) {
+            str += " ";
+        }
+        for (var m = 1; m <= 2 * (i+1) - 1; m++) {
+            str += "*";
+        }
+        str += "\n";
+    }
+    console.log(str);
+
+    /**
+     * 倒三角形
+     */
+    var str1 = "";
+    var cols1 = 4;
+    for (var i = 0; i < cols1; i++) {
+        for (var j = 0; j <= i; j++) {
+            str1 += " ";
+        }
+        for (var k = 1; k <=2 * (cols1-i )-1; k++) {
+            str1 += "*";
+        }
+        str1 += "\n";
+    }
+    console.log(str1);
+
+
+    //菱形：分为两个三角形
+    var cols2 = 15;  //菱形行数   奇数及奇数行   偶数及偶数+1行
+    var c = cols2/2;//菱形行数的一半
+    var str = "";//第一个三角形
+    var cols =parseInt(c)+1 ;//第一个三角形行数
+    var str1 = "";//第二个三角形
+    var cols1 =parseInt(c) ;//第二个三角形行数
+    for (var i = 0; i < cols; i++) {
+        for (var k = 0; k < cols - i; k++) {
+            str += " ";
+        }
+        for (var m = 1; m <= 2 * (i+1) - 1; m++) {
+            str += "*";
+        }
+        str += "\n";
+    }
+
+
+    for (var i = 0; i < cols1; i++) {
+        for (var j = 0; j <= i+1; j++) {
+            str1 += " ";
+        }
+        for (var k = 1; k <=2 * (cols1-i )-1; k++) {
+            str1 += "*";
+        }
+        str1 += "\n";
+    }
+   var str2 = str + str1;
+    console.log(str2);
+</script>
+</body>
+</html>

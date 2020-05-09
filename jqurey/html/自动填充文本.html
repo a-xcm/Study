@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自动填充文本</title>
+	</head>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery-ui.js" ></script>
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css"/>
+	<!--数据-->
+	<script>
+	$(function(){
+		var nameTags = [
+		"徐靖皓","刘旭","王灿","胡梦蝶","谢陈鸣",
+		"张学友","刘德华","郭富城","黎明",
+		"谢霆锋","张柏芝","陈冠希","王菲",
+		"马云","马化腾","王健林","许家印","李彦宏",
+		"李开复","柳传志","刘强东","雷军","陈光标",
+		"丁磊","张朝阳","王志东","史玉柱","陈天桥",
+		"任正非","李嘉诚","周鸿祎",
+		"薛之谦","周杰伦","半阳","林俊杰","李荣浩",
+		"Alan Walk","陈奕迅","许嵩","毛不易","易烊千玺",
+		"贺一航","黑龙","简弘亦","白小白","王力宏",
+		"杨宗纬","刀郎","张宇","张杰","赵雷","胡彦斌",
+		];
+		
+		$("#tags").autocomplete({
+			source:nameTags
+		});
+	});
+	</script>
+	
+	
+	<body>
+		
+		<label >请输入名字</label>
+		<input type="text" id="tags" />
+	</body>
+</html>

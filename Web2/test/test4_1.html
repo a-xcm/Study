@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>扑克</title>
+		<style>
+			#desk{
+				width:1000px;
+				height: 600px;
+				margin: auto;
+				background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541052687916&di=c1a964505a891946e8c9a0fcccd3918e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014db2554955ef0000019ae974f3ba.jpg);
+				position: relative;
+			}
+			#one{
+				transform:rotate(90deg) ;
+				position: absolute;
+				top:250px;
+				left:-100px;
+			}
+			#two{
+				transform: rotate(-90deg);
+				position: absolute;
+				top:150px;
+				right:-100px;
+			}
+			#bottomCards{
+				position: absolute;
+				top:30%;
+				left:50%;
+			}
+			
+			#three{
+				position: absolute;
+				top:70%;
+				left:35%;
+			}
+			img{
+				margin-left: -110px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="desk">
+			<div id="one"></div>
+			<div id="two"></div>
+			<div id="bottomCards"></div>
+			<div id="three"></div>
+			<div id="four"></div>
+			<button id="btn">重来</button>
+		</div>
+
+
+		<script type="text/javascript">
+			
+			//获取标签
+			var one = document.getElementById("one");
+			var two = document.getElementById("two");
+			var three = document.getElementById("three");
+			var four = document.getElementById("four");
+			var bottomCards = document.getElementById("bottomCards");
+			
+			//定义数组
+			function array(n){
+				var arr = new Array();
+				for(var i = 0;i < n; i++){
+					arr[i] = i + 1;
+				}
+				return arr;
+			}
+			
+			var cards = array(54);//1-54的数组
+			
+			//发牌方法
+			function deal(div,n){
+				
+				var card = [];
+				for(var i = 0;i < n; i++){
+					var len = cards.length;
+					var radom = Math.floor(Math.random()*len);
+					card[i] = cards[radom];
+					cards.splice(radom,1);
+				}
+				card.sort(function(a,b){
+					return a-b;
+				});
+				for(var i = 0;i < n; i++){
+					var img = document.createElement("img");
+					img.src = 'imgs/poker/'+card[i]+'.jpg';
+					div.appendChild(img);
+				}
+				console.log(card);
+			}
+			
+			
+			deal(one,17);
+			deal(two,17);
+			deal(three,17);
+			deal(bottomCards,3);
+			var btn = document.getElementById("btn");
+			
+			
+			
+		</script>
+
+
+
+
+	</body>
+
+</html>

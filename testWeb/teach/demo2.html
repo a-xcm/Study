@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型转换</title>
+</head>
+<body>
+    <script>
+        //1、其他类型转换为字符串 -
+       // - -调用toString方法
+        var a = 10;
+        var b = false;
+        console.log(a.toString()); //我们常用：" " + a 来转换字符串
+        console.log(b.toString());
+
+        console.log(a.toString(2));//输出二进制表示
+        console.log(a.toString(8));//输出八进制表示
+        console.log(a.toString(16));//输出十六进制表示
+
+        var c = null;
+        var d = undefined;
+        //null 和 undefined 比较特殊，使用如下方式转换为String
+        console.log(String(c));
+        console.log(String(d));
+
+        //2、其他类型转换为布尔值
+
+        console.log(Boolean("")); //false 空字符串
+        console.log(Boolean("11")); //true 非空字符串
+        console.log(Boolean("0")); //true 非空字符串
+        console.log(Boolean(null)); // false null值
+        console.log(Boolean("null")); // true 非空字符串
+        console.log(Boolean(0)); // false 数字0
+        console.log(Boolean(100)); // true 非 数字0
+
+        //3、其他类型转换为数字（重点）
+
+        console.log(Number("111a")); // NaN 字符串中包含非字符
+        console.log(Number("111")); // 111
+        console.log(Number(111)); // 111
+        console.log(Number(false)); //0
+        console.log(Number(true)); // 1
+        console.log(Number(undefined)); // NaN
+        console.log(Number(null)); // 0
+
+        //NaN的特殊
+        console.log(NaN == NaN); //false
+
+        //以上转换为数字哦都不常用
+        // parseInt():将字符串转换为整数
+        // parseFloat()：将字符串转换为浮点数
+        console.log(parseInt("ddd")); // NaN
+        console.log(parseInt("122fdf423")); // 122
+        console.log(parseInt("a223d45")); //NaN
+
+         /*
+         parseInt() 接收两个参数，
+                第一个参数是要转换的数字字符串，
+                第二个参数是进制类型 2表示二进制，其余类推
+                （如果不传入第二个参数，默认是十进制）
+
+            转换的时候，从左开始，
+                如果第一个字符不是数字，直接返回NaN
+                如果第一个字符是数字，就判断第二个字符，
+                以此直到字符串结束或者遇到非数字字符，则只转换这个非数字字符之前的数字
+            js中的数字，输出都是以十进制输出
+         */
+        console.log(parseInt("10",10));//10
+        console.log(parseInt("10",2)); //2
+        console.log(parseInt("10",8)); //8
+        console.log(parseInt("a",16));//10
+
+        //parseFloat()： 字符串必须以十进制表示浮点数
+
+        console.log(parseFloat("10.7"));//10.7
+        console.log(parseFloat("a")); //NaN
+        console.log(parseFloat("01.010")); // 1.01
+        console.log(parseFloat("10.22.44")); //10.22
+
+    </script>
+</body>
+</html>

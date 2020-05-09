@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>渐入渐出</title>
+		<script src="../js/jquery.js"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+/*				display: none;*/
+			}
+		</style>
+		
+		<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+//				  隐藏的淡入
+//				 $("#div1").fadeIn();
+//				 $("#div2").fadeIn("slow");
+//				 $("#div3").fadeIn(3000);
+
+//				显示的淡出
+//			 	$("#div1").fadeOut();
+//			 	 $("#div2").fadeOut("slow");
+//			 	 $("#div3").fadeOut(3000);	
+
+//				淡入淡出					
+			  $("#div1").fadeToggle();
+			  $("#div2").fadeToggle("slow");
+			  $("#div3").fadeToggle(3000);
+			});
+			})
+			
+		</script>
+		
+		
+		
+	</head>
+	<body>
+		<button>点击</button>
+		<div id="div1" style="background:red ;"></div>
+		<div id="div2" style="background: blue;"></div>
+		<div id="div3" style="background: green;"></div>
+		
+		
+	</body>
+</html>

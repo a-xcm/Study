@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多选框的全选与反选</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+<label>全选</label><input type="checkbox" name="hobby" value="-100" id="checkAll">
+<hr/>
+<label>足球</label><input type="checkbox" name="hobby" value="1"> <br/>
+<label>篮球</label><input type="checkbox" name="hobby" value="2"> <br/>
+<label>排球</label><input type="checkbox" name="hobby" value="3"> <br/>
+<label>兵乓球</label><input type="checkbox" name="hobby" value="4"> <br/>
+<label>羽毛球</label><input type="checkbox" name="hobby" value="5"> <br/>
+<label>棒球</label><input type="checkbox" name="hobby" value="6"> <br/>
+<label>橄榄球</label><input type="checkbox" name="hobby" value="7"> <br/>
+<label>桌球</label><input type="checkbox" name="hobby" value="8"> <br/>
+<hr/>
+<label>反选</label><input type="checkbox" name="hobby" value="-1" id="InvertSelection">
+
+
+<script>
+    var arr = document.getElementsByName("hobby");
+    var arrLen = arr.length;
+    document.getElementById("checkAll").addEventListener("click", function () {
+        if(arr[0].checked ==true){
+            for (var i = 1; i < arrLen - 1; i++) {
+                arr[i].checked = true;
+            }
+        }else{
+            for (var i = 1; i < arrLen - 1; i++) {
+                arr[i].checked = false;
+            }
+        }
+
+    });
+    document.getElementById("InvertSelection").addEventListener("click", function () {
+            for (var i = 1; i < arrLen - 1; i++) {
+                if (arr[i].checked == true) {
+                    arr[i].checked = false;
+                } else {
+                    arr[i].checked = true;
+                }
+            }
+    });
+</script>
+</body>
+</html>

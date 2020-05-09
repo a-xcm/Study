@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逻辑运算符</title>
+</head>
+<body>
+    <script>
+        //比较、逻辑运算符的结果一定是布尔类型
+        /**
+         * &&
+         *  ||
+         *  ！
+         *  三目运算符
+         */
+
+        var a = 1;
+        var b = 2;
+        var c = 3;
+
+        console.log( a < b && a < c); // true
+        console.log( a > b && a < c); // false
+        //注意：a > b 为false ，那么a > b && a < c 直接返回false ，就不会判断 a< c
+        //这个叫 短路与
+
+        console.log( a < b || a < c); // true
+        console.log( a > b || a < c); // true
+        console.log( a > b || a > c); // false
+
+        console.log(!a); // a的值为1 ， 1用布尔值表达，非true就是false
+        console.log(!b); // b值不为0 ，b用布尔值表达为true，非true就是false
+
+        //判断输出 a 和 b 中的较大的一个数
+        console.log( a > b ? a : b);
+        /**
+         * 语法：
+         *           逻辑表达式 ？ 值1 ： 值2
+         *  说明：
+         *            如果逻辑表达式 为真，返回值1，否则返回值2
+         */
+
+        //typeof 运算符
+        /**
+         * 语法：
+         *          typeof   变量名
+         *  返回：
+         *            boolean 值
+         *  说明：
+         *             用于判断对应的变量，是什么类型
+         *             Underfined
+         *             String
+         *             Number
+         *             Boolean
+         *             Object
+         */
+
+            var a = null;
+            var b = undefined;
+            var c = 1;
+            var d = "str";
+            var e = true;
+
+            console.log(typeof  a); //object
+            console.log(typeof  b); //undefined
+            console.log(typeof  c); // number
+            console.log(typeof  e); //boolean
+            console.log(typeof  d); //string
+        /**
+         * object 在js中表示引用类型
+         *   a在定义的时候赋的初值为null ，这里null表示给引用类型占位。
+         */
+        var  f = new String("str");
+        console.log(typeof  f); // object
+        var g = new Number("100"); //object
+        console.log(typeof g);
+        /**
+         * 既然所有的引用类型使用 typeof  判断都返回object，那么怎么区分不同的object
+         *
+        * 区分需要另一个关键字： instanceof
+        *
+        */
+        console.log(f instanceof String ); // true
+        console.log(f instanceof Number ); // false
+    </script>
+</body>
+</html>

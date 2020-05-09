@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单验证</title>
+	</head>	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.validate.min.js"></script>
+	<script src="../js/messages_zh.js"></script>
+	<script type="text/javascript">
+		
+		
+		$.validator.setDefaults({
+			debug: "true",
+			success: "valid",
+			submitHandler: function() {
+				document.getElementById("form1").submit();
+			}
+		});
+//添加自定义验证
+			jQuery.validator.addMethod("isZipCode", function(value, element) {   
+			    var tel = /^[0-9]{6}$/;
+			    return this.optional(element) || (tel.test(value));
+			}, "请正确填写您的邮政编码");
+$().ready(function() {
+	$("#form1").validate({
+
+		rules: {
+			name: {
+				required: true,
+				minlength: 6,
+			},
+			password: {
+				required: true,
+				minlength: 8,
+
+			},
+			confirm_password: {
+				required: true,
+				equalTo: "#password",
+			},
+
+		}
+
+	})
+
+});</script>
+	<body>
+		<form id="form1" action="#" method="get">
+			<p>
+				<label>用户名</label>
+				<input id="name" name="name" type="text"   />
+			</p>
+			<p>
+				<label> 密码</label>
+				<input id="password" name="password" type="password"  />
+			</p>
+			<p>
+				<label>确认密码</label>
+				<input type="password" name="confirm_password" id="confirm_password"  />
+			</p>
+			<p>
+				<label>性别</label>
+				<input type="radio" id="gender_male" name="sex"  value="m" required/> <label>男</label>
+				<input type="radio" id="gender_female" name="sex" value="f"  /> <label>女</label>
+			</p>
+			
+			<p>
+				<label>年级</label>
+				<select id="jungle" name="select" required>
+					
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
+			</p>
+			<p>
+				<label>兴趣爱好</label>
+				<input type="checkbox" name="hobby"  value="篮球" minlength="1" /> <label>篮球</label>
+				<input type="checkbox" name="hobby"  value="足球" /> <label>足球</label>
+				<input type="checkbox" name="hobby"  value="乒乓球" /> <label>乒乓球</label>
+				<input type="checkbox" name="hobby"  value="网球" /> <label>网球</label>
+			</p>
+			<p>
+				<label >自我介绍</label>
+				<textarea cols="20" rows=5"></textarea>
+			</p>			
+			<p>
+				<input type="submit" value="注册"/>
+				<input type="reset" value="清空" />
+			</p>
+			
+		</form>
+		
+	</body>
+</html>

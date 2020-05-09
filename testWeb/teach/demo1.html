@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本数据类型</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        console.log("a的值为: " + a);
+
+        a = "字符串";
+        console.log("a的值为：" + a);
+        //--js是弱类型语言，变量在运行过程中，可以改变类型，（但是，不建议在运行过程中改变变量）
+
+        var b = null;
+        var c ;//只定义不赋值，默认为undefined
+        console.log(b == c); //undefined == null 返回 true ，但是，它们不是一个值
+
+        var d = true;
+        var e = false;
+
+        var aa = 1; //整数
+        var bb = 1.0; //浮点数
+
+        console.log("数字的最大值：" + Number.MAX_VALUE);
+        console.log("数字的最小值：" + Number.MIN_VALUE);
+        console.log("正无穷大：" + Number.POSITIVE_INFINITY);
+        console.log("负无穷大："+ Number.NEGATIVE_INFINITY);
+
+        var cc = NaN;
+        //非数字，正常定义变量时，不会定义为NaN,当非数值类型的表达式，
+        // 强制类型转换为Number类型时，如果被转换的数据不是数字，返回NaN,
+
+        //isFinite()方法用于一个数是否是有穷
+        console.log(isFinite(100000)); //true
+        console.log(isFinite(Number.POSITIVE_INFINITY)); //false
+
+        //isNaN()方法用于判断这个数是否是数字
+        console.log(isNaN(1000)); //false
+        console.log(isNaN("aaa")); //true
+
+        var str = 'aaa';
+        var str1 = "bbb";
+        //js中定义字符串，用单引号或双引号都可以
+    </script>
+</body>
+</html>

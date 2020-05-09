@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性设置</title>
+    <style>
+        .test{
+            width:300px;
+            height: 500px;
+            background: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="test" id="testID"></div>
+
+<button type="button" onclick="chageColor()">随机改变div的背景颜色</button>
+
+</table>
+
+<script>
+    function chageColor() {
+        var div = document.getElementById("testID");
+        var a = Math.round(Math.random()*255);
+        var b = Math.round(Math.random()*255);
+        var c = Math.round(Math.random()*255);
+        var arr=[a,",",b,",",c];
+        // div.style.backgroundColor="rgb("+arr.join("")+")";
+        div.style.backgroundColor="rgb("+a+","+b+","+c+")";
+    }
+
+
+</script>
+</body>
+</html>

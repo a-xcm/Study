@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机数练习</title>
+</head>
+<body>
+<script>
+    //100个1~50的数。并计算出现多少次;
+    var arr = [];
+    var n = 100;//生成n个数
+    for (var i = 0; i < n; i++) {
+        var num = Math.floor(Math.random() * 50 + 1);
+        if (arr[num-1] == undefined){
+            arr[num-1] =1;
+        }else{
+            arr[num-1] ++;
+        }
+    }
+    for(var i =0; i < 50; i++){
+        console.log((i+1) + "出现的次数为"+(arr[i] == undefined ? 0:arr[i]));
+    }
+</script>
+</body>
+</html>

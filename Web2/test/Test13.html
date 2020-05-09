@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆界面</title>
+		<style type="text/css">
+			#login,
+			#imgs {
+				height: 300px;
+				display: inline-block;
+			}
+			a{
+				text-decoration: none;
+			}
+			#app {
+				width: 1000px;
+				margin: auto;
+			}
+			
+			#imgs {
+				width: 33%;
+			}
+			
+			#content {
+				position: relative;
+				height: 300px;
+			}
+			
+			#login {
+				position: absolute;
+				left: 30%;
+				width: 70%;
+				border: 1px solid gray;
+			}
+			#quickLogin{
+				position: relative;
+				top:-106px;
+			
+			}
+			#quickLogin,
+			#acoutLogin {
+				width: 300px;
+				padding: 20px;
+				height: 260px;
+			position: relative;
+				display: inline-block;
+			}
+			#acoutLogin{
+				border-right: 1px solid gray;
+			}
+			#quickLogin img {
+				width: 50px;
+			}
+			
+			#p1 {
+				margin-top: 50px;
+			}
+			
+			.input {
+				width: 300px;
+				height: 30px;
+			}
+			.right{
+				float: right;
+			}
+			.dl{
+				position: relative;
+				top:100px;
+			text-align: center;
+				
+			}
+			button {
+				width: 300px;
+				height: 30px;
+				background: skyblue;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div id="header">
+				<p style="color: gray;font-size: 12px;">明日之后&nbsp;&nbsp;|&nbsp;&nbsp;一起活下去</p>
+
+			</div>
+			<hr />
+			<div id="content">
+
+				<div id="imgs">
+					<img width="80%" src="imgs/mingri.jpg" />
+					<img width="80%" src="imgs/mr2.jpg" />
+				</div>
+
+				<div id="login">
+					<div id="acoutLogin">
+						<p>
+							<span class="xian">登陆</span>
+							<span class="right">手机动态码登陆</span>
+							<hr />
+						</p>
+						<p><input class="input" type="text" placeholder="手机/用户名/邮箱" /></p>
+						<p><input class="input" type="password" placeholder="请输入6-32位密码"></p>
+						<p id="p1">
+							<input type="checkbox" />七天内免登陆
+							<span class="right"><a href="#">忘记密码</a></span>
+						</p>
+						<button>登陆</button>
+					</div>
+					<div id="quickLogin">
+						<p class="wenzi">没有账号？
+							<a href="#">免费注册</a>
+						</p>
+
+						<p class="dl">------快速登录------</p>
+						<p class="dl">
+							<img src="imgs/QQ.png" />
+							<img src="imgs/weibo.png" />
+							<img src="imgs/weixin.png" />
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+</html>

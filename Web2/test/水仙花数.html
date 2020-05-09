@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习3</title>
+		<script>
+			//水仙花数
+			console.log(Math.pow(2,3));//8
+			for(var i=100;i<=999;i++){
+				//获取百位数
+				var a =parseInt(i / 100) ;
+				//获取十位数
+				var b = parseInt(i%100/10) ;
+				//获取个位数
+				var c =i % 10 ;
+				
+				if((Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3)) == i){
+					document.write("\t"+i);
+				}
+				
+			}
+			document.write("<br/>");
+			//100-999分解每个位上的数
+			for(var i=100;i<=999;i++){
+				//获取百位数
+				var a =parseInt(i / 100) ;
+				//获取十位数
+				var b = parseInt(i%100/10) ;
+				//获取个位数
+				var c =i % 10 ;
+			document.write("\t"+i+"："+"\t百位："+a+"\t十位："+b+"\t个位："+c);
+			if(i % 4 ==0){
+				document.write("<br/>");
+			}
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

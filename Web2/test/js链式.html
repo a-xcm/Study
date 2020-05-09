@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		//创建一个类
+		function Person() {};
+		//在原型上定义相关方法
+		Person.prototype = {
+			setName: function(name) {
+				this.name = name;
+				return this;
+			},
+			setAge: function(age) {
+				this.age = age;
+				return this;
+			},
+			getName:function(){
+				return this.name;
+			},
+			getAge:function(){
+				return this.age;
+			}			
+		}
+		//实例化
+		var person = new Person();
+		console.log(person.setName("Mary").getName()); 
+		console.log(person.setAge(20).getAge());
+	
+				function Person() {};
+				//实现部分
+				Person.prototype = {
+					set: function(value) {
+						this.value = value;
+						return this;
+					},
+					get: function() {
+						return this.value * 2; //由于要返回值，且不需要继续调用方法，所以不返回this
+					}
+				}
+				var person = new Person();
+				console.log(person.set(10).get()); //20
+	</script>
+
+</html>

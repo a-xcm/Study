@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.1)
+        }
+        canvas{
+        	border: 1px solid black;
+        }
+       
+    </style>
+</head>
+<body>
+	
+<canvas id="canvas1" width="200" height="100"></canvas>
+<canvas id="canvas2" width="200" height="100"></canvas>
+<canvas id="canvas3" width="200" height="100"></canvas>
+<canvas id="canvas4" width="200" height="100"></canvas>
+<canvas id="canvas5" width="200" height="100"></canvas>
+<canvas id="canvas6" width="200" height="100"></canvas>
+<canvas id="canvas7" width="200" height="100"></canvas>
+<script>
+    var canvas1 = document.getElementById("canvas1"); 
+    var canvas2 = document.getElementById("canvas2");   
+    var canvas3 = document.getElementById("canvas3"); 
+    var canvas4 = document.getElementById("canvas4");
+    var canvas5 = document.getElementById("canvas5");
+    var canvas6 = document.getElementById("canvas6");
+    var canvas7 = document.getElementById("canvas7");
+    
+    
+    var ctx1 = canvas1.getContext("2d");
+    ctx1.fillStyle = "blue";//设置fillStyle属性可以是CSS颜色，渐变，或图案。fillStyle 默认设置是#000000（黑色）。
+    ctx1.fillRect(20,20,100,50);//fillRect(x,y,width,height) 方法定义了矩形当前的填充方式
+    
+    
+    /*
+     * 在canvas中绘制线条, 我们将使用以下方法:
+     * moveTo(x,y) 定义线条开始坐标
+     * lineTo(x,y) 定义线条结束坐标
+     */
+    var ctx2 = canvas2.getContext("2d");
+    
+    ctx2.moveTo(0,0);
+    ctx2.lineTo(200,100);
+    ctx2.stroke();
+    
+    
+    
+    /*
+     * 在canvas中绘制圆形, 我们将使用以下方法:
+     * arc(x,y,r,start,stop)
+     */
+    var ctx3 = canvas3.getContext("2d");
+	ctx3.beginPath();
+	ctx3.arc(100,50,40,0,2*Math.PI);
+	ctx3.fillStyle = "#1E90FF";
+	ctx3.fill();//填充
+	ctx3.stroke();//线
+	
+	
+	/*
+	 * 使用 canvas 绘制文本，重要的属性和方法如下：
+	 *	font - 定义字体
+	 *	fillText(text,x,y) - 在 canvas 上绘制实心的文本
+	 *	strokeText(text,x,y) - 在 canvas 上绘制空心的文本
+	 */
+	var ctx4 = canvas4.getContext("2d");
+	ctx4.font = "25px Arial";
+	ctx4.fillText("Hello World",30,40);
+	ctx4.strokeText("Hello World",30,80);
+	
+	
+	/*
+	 * Canvas - 渐变
+	 *	渐变可以填充在矩形, 圆形, 线条, 文本等等, 各种形状可以自己定义不同的颜色。
+	 *	以下有两种不同的方式来设置Canvas渐变：
+	 *	createLinearGradient(x,y,x1,y1) - 创建线条渐变
+	 *	createRadialGradient(x,y,r,x1,y1,r1) - 创建一个径向/圆渐变
+	 *	当我们使用渐变对象，必须使用两种或两种以上的停止颜色。
+	 *	addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1.
+	 *	使用渐变，设置fillStyle或strokeStyle的值为 渐变，然后绘制形状，如矩形，文本，或一条线。
+	 *	使用 createLinearGradient():
+	 */
+	//创建一个线性渐变。使用渐变填充矩形:
+	var ctx5 = canvas5.getContext("2d");
+	// 创建渐变
+	var grd=ctx5.createLinearGradient(0,0,200,0);
+	grd.addColorStop(0,"red");
+	grd.addColorStop(1,"white");
+	 
+	// 填充渐变
+	ctx5.fillStyle=grd;
+	ctx5.fillRect(10,10,150,80);
+	
+	
+	
+</script>
+</body>
+</html>

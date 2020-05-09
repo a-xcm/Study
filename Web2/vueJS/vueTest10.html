@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-on</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1>v-on 指令</h1>
+			
+			<p>{{message}}</p>
+			
+			<button v-on:click=" message = '修改之后的值' ">点击修改值</button>
+			
+		</div>
+		
+	</body>
+	<script>
+		
+		new Vue({
+			el:'#app',
+			data:{
+				message:'修改之前的值',
+			}
+		});
+		
+	</script>
+</html>

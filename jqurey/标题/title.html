@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>标题提示</title>
+
+<script src="jquery.js"></script>
+<script src="jquery.growl.js"></script>
+<link href="jquery.growl.css" rel="stylesheet" type="text/css" />
+	
+<script type="text/javascript">
+	$(function() {
+		// click事件之后显示
+		$('.linhuiyin').click(function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			return $.growl.error({
+				title: "林徽因",
+				message: "愿无岁月可回头，且以深情共余生。"
+			});
+		});
+		$('.mengxiaodong').click(function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			return $.growl.error({
+				title: "孟小冬",
+				message: "错的值得，爱也要值得。"
+			});
+		});
+		$('.lvbicheng').click(function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			return $.growl.error({
+				title: "吕碧城",
+				message: "若无知心人，宁负冰雪聪明芙蓉色。"
+			});
+		});
+		$('.zhangailing').click(function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			return $.growl.error({
+				title: "张爱玲",
+				message: "万转千回之后的放弃。"
+			});
+		});
+		$('.luxiaoman').click(function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			return $.growl.error({
+				title: "陆小曼",
+				message: "纵情只为自己活。"
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<ul>
+	<li>
+		<a class="linhuiyin" href="#">林徽因</a>
+	</li>
+	<li>
+		<a class="mengxiaodong" href="#">孟小冬</a>
+	</li>
+	<li>
+		<a class="lvbicheng" href="#">吕碧城</a>
+	</li>
+	<li>
+		<a class="zhangailing" href="#">张爱玲</a>
+	</li>
+	<li>
+		<a class="luxiaoman" href="#">陆小曼</a>
+	</li>
+</ul>
+</body>
+</html>

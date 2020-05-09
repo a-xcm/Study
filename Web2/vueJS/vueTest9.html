@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for指令</title>
+		<script src="vue.js"></script>
+		
+	</head>
+
+	<body>
+		
+		<div id="app">
+			
+			<table border="1" cellspacing="0">
+				<th colspan="10">座次表-web</th>
+				<tr v-for=" s in students">
+					<td>{{s.name1}}</td>
+					<td>{{s.name2}}</td>
+					<td>{{s.name3}}</td>
+					<td>{{s.name4}}</td>
+					<td>{{s.name5}}</td>
+					<td></td>
+					<td>{{s.name6}}</td>
+					<td>{{s.name7}}</td>
+					<td>{{s.name8}}</td>
+					<td>{{s.name9}}</td>
+					<td>{{s.name10}}</td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+	<script>
+		
+		
+	var  vm =	new Vue({
+			el: '#app',
+			data: {
+				students:[
+				{
+						name1:'刘旭',name2: '谢陈鸣',name3:'徐靖皓',name4: '王灿',name5: '胡梦蝶',
+						name6:' ',name7:'李洁',name8: '李琴',name9: ' ',name10: ' '
+				} ,{
+						name1: ' ',name2: '侯银银',name3: '田武川',name4: '陈建',name5: ' ',
+						name6: '蒋正',name7: '李佳睿',name8: '杨成',name9: '彭瑶',name10: '陈亮'
+				},{
+						name1: '陈九天',name2: '杨泳赟',name3: '唐金川',name4: '熊廷遥',name5: ' ',
+						name6: ' ',name7: ' ',name8: '杨稀',name9: '陈文营',name10: '赵志城'
+				},{
+						name1: '罗佳鑫',name2: '柳云飞',name3: '徐鹏',name4: '杨柯敏',name5: '',
+						name6: '何孟璋',name7: '谯林峰',name8: '梁文吉',name9: '扬杰',name10: ''
+				},{
+						name1: ' ',name2: ' ',name3: ' ',name4: '杨文博',name5: ' ',
+						name6: '吴世霖',name7: ' ',name8: ' ',name9: '王坤',name10: '饶雨'
+				}
+
+				]
+			}
+		})
+	</script>
+
+</html>

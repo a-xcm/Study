@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页工具条</title>
+    <style>
+
+        .page li {
+            border: 1px solid black;
+            display: inline-block;
+            list-style: none;
+            width: 30px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+        .page #y{
+            width: 100px;
+        }
+        .page .btn {
+            height: 20px;
+            width: 10px;
+            background: #ccc;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+
+<ul class="page" id="ulID">
+    <li class="btn"><a id="before" href="#">&laquo;</a></li>
+    <li class="btn"><a id="previous" href="#">&lsaquo;</a></li>
+    <li ><a id="1" href="#">1</a></li>
+    <li ><a id="2" href="#">2</a></li>
+    <li ><a id="3" href="#">3</a></li>
+    <li ><a id="4" href="#">4</a></li>
+    <li id="current"><a id="5" href="#">5</a></li>
+    <li><a id="6" href="#">6</a></li>
+    <li><a id="7" href="#">7</a></li>
+    <li><a id="8" href="#">8</a></li>
+    <li><a id="9" href="#">9</a></li>
+    <li class="btn"><a id="next" href="#">&rsaquo;</a></li>
+    <li class="btn"><a id="after" href="#">&raquo;</a></li>
+    <li id="y">共10页 90条</li>
+</ul>
+<script>
+
+    var ul = document.getElementById("ulID");
+    ul.addEventListener("click", fn);
+
+    function fn(ev) {
+        var a = ev.target;
+
+        var data = a.innerHTML;//获取其中的内容
+
+        var dataNum = parseInt(data);
+
+
+        if (a.id == "before") {
+                    for (var i = 1; i <= 9; i++) {
+                        document.getElementById("" + i + "").innerHTML = "" + i + "";
+            }
+
+        }
+
+
+        if (a.id == "previous") {
+            for (var i = 1; i <= 9; i++) {
+
+                var num1 = document.getElementById("" + i + "").innerHTML;
+                num1 = parseInt(num1);
+                document.getElementById("" + i + "").innerHTML = "" + (num1 - 1) + "";
+                if (num1 <= 9) {
+                    for (var i = 1; i <= 9; i++) {
+                        document.getElementById("" + i + "").innerHTML = "" + i + "";
+                    }
+                    break;
+                }
+
+            }
+        }
+        if (a.id == "next") {
+            for (var i = 1; i <= 9; i++) {
+                var num1 = document.getElementById("" + i + "").innerHTML;
+                num1 = parseInt(num1);
+                document.getElementById("" + i + "").innerHTML = "" + (num1 + 1) + "";
+                if(  document.getElementById("" + i + "").innerHTML ==90){
+                    for (var j = 1;  j<= 9; j++) {
+                        var num2 = 81;
+                        document.getElementById("" + j + "").innerHTML = "" + (num2 + j) + "";
+                    }
+                    break;
+                }
+
+            }
+        }
+        if (a.id == "after") {
+            for (var i = 1; i <= 9; i++) {
+                var num1 = 81;
+                document.getElementById("" + i + "").innerHTML = "" + (num1 + i) + "";
+            }
+        }
+
+        //数字小于5恢复最初的样子
+        if (dataNum < 5) {
+            for (var i = 1; i <= 9; i++) {
+                document.getElementById("" + i + "").innerHTML = "" + i + "";
+            }
+            document.getElementById("current").style.backgroundColor = "";
+        }
+        //数字大于5依次加
+        if (dataNum >= 5) {
+            document.getElementById("current").style.backgroundColor = "#ccc";
+            var count = -4;
+            for (var i = 1; i <= 9; i++) {
+                var dataChange = dataNum + count;
+                document.getElementById("" + i + "").innerHTML = "" + dataChange + "";
+                count++;
+
+                if(dataNum > 86){
+                    document.getElementById("current").style.backgroundColor = "";
+                }
+                if(  dataChange ==90){
+                    for (var j = 1;  j<= 9; j++) {
+                        var num2 = 81;
+                        document.getElementById("" + j + "").innerHTML = "" + (num2 + j) + "";
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+</script>
+
+
+</body>
+
+</html>

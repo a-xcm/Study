@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/tether/1.1.1/css/tether.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<form id="demo1">
+    <div class="form-group row">
+        <label class="col-sm-2">Radios</label>
+        <div class="col-sm-10">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                    //错误信息默认放在这里
+                    Option1
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    Option2
+                </label>
+            </div>
+            //我想放在这里
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2">Checkbox</label>
+        <div class="col-sm-10">
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox1" value="option1">
+                //错误信息默认放在这里
+                Option1
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox2" value="option2">Option2
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox3" value="option3">Option3
+            </label>
+            //我想放在这里
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/tether/1.1.1/js/tether.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.14.0/additional-methods.min.js"></script>
+
+<script>
+    $(function () {
+        $("#demo1").validate({
+            rules: {
+                gridRadios: {
+                    required: true
+                },
+                checkbox: {
+                    required: true
+                }
+            },
+            messages: {
+                gridRadios: {
+                    required: "需要选择，不能为空"
+                },
+                checkbox: {
+                    required: "需要选择，不能为空"
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的增删改查</title>
+</head>
+<body>
+<div id="n">12</div>
+<div  id="divId">
+    这是一个div
+    <p id="nb">
+        赵小龙同学，由于2017~2018学年度，由于旷课 ，记大过处分。
+    </p>
+</div>
+<script>
+
+    var el = document.createElement("p");//创建一个标签
+    el.innerHTML = "这是一个js创建的段落";
+    document.body.appendChild(el);//为body元素添加一个子元素
+    //以上方法加载的位置，在已经显示的body所有子元素的最后
+
+
+    //小练习:在html页面显示一个数字，这个数字是随机1~100的数，每5秒随机一次
+    function fn() {
+        document.getElementById("n").innerHTML = Math.round(Math.random() * 100);
+    }
+
+    var ff = setInterval(fn, 5000);
+
+    //删除一个元素
+    /**
+     * 1获取这个元素对象
+     *
+     * 2.使用removeElment方法删除
+     */
+    var el = document.getElementById("nb");
+    // document.body.removeChild(el);
+
+    document.getElementById("divId").removeChild(el);
+   // document.getElementById("divId").innerHTML="";
+
+    /**
+     * 删除元素一般只能通过其父元素调用removerChild方法删除
+     * 也可以使用innerHTML=""删除
+     * 使用innerHTML注意:如果父元素下有多个元素，只删除一个的话，不适用
+     */
+</script>
+</body>
+</html>

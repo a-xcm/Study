@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jqurey显示与隐藏</title>
+		<style type="text/css">
+			p {
+				background: blue;
+			}
+		</style>
+		<script src="../js/jquery.js"></script>
+		<script>
+			$(document).ready(
+				function() {
+					$("#toggle").click(
+						function() {
+							$("p").toggle(1000);
+							
+						}
+					);
+					$("#hide").click(
+						function() {
+							$("p").hide(1000);
+						}
+					);
+					$("#show").click(
+						function() {
+							$("p").show(1000);
+						}
+					);
+				}
+			);
+		</script>
+	</head>
+
+	<body>
+		<button id="toggle">显示与隐藏</button>
+		<button id="hide">隐藏文字</button>
+		<button id="show">点击显示</button>
+
+		<p class="p1">世界本是一物</p><br /><br />
+		<p class="p2">万物皆有灵气</p><br /><br />
+		<p class="p3">事物皆是相生相克</p><br /><br />
+		<p class="p4">世间是无欲无求</p><br /><br />
+
+	</body>
+
+</html>

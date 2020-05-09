@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>vue</title>
+		<script type="text/javascript" src="vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+
+			<h1>{{message}}學的不只是技術，更是夢想！
+			
+			</h1>
+<input type="text"  v-model="message" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		var eData = '';
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message:eData,
+				
+			}
+		});
+	</script>
+
+</html>

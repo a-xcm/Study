@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>sportsCar随机</title>
+		<style>
+			img {
+				width: 100%;
+			}
+			
+			td {
+				width: 30%;
+			}
+			
+			table {
+				text-align: center;
+				width: 1000px;
+				margin: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<table>
+			<tr>
+				<td>
+					<img src="imgs/sportsCar/1.jpg" id="img1" />
+				</td>
+				<td>
+					<img src="imgs/sportsCar/10.jpg" id="img2" />
+				</td>
+				<td>
+					<img src="imgs/sportsCar/12.jpg" id="img3" />
+				</td>
+			</tr>
+			<tr>
+			
+				<td colspan="3">
+					<img src="imgs/sportsCar/2.jpg" id="img4" />
+				</td>
+
+			</tr>
+
+			<tr>
+				<td>
+					<img src="imgs/sportsCar/2.jpg" id="img5" />
+				</td>
+				<td></td>
+				<td>
+					<img src="imgs/sportsCar/11.jpg" id="img6" />
+				</td>
+			</tr>
+		</table>
+
+		<script type="text/javascript">
+			function photoNum(n) {
+				var num = new Array();
+				for(var i = 0; i < n; i++) {
+					num[i] = i + 1 + ".jpg";
+				}
+				return num;
+			}
+
+			function photosChange(img, photo) {
+
+				var u = photo[Math.floor(Math.random() * photo.length)];
+				img.src = "imgs/sportsCar/" + u;
+			}
+
+			var photos = photoNum(33);
+			console.log(photos);
+
+			var photo1 = photos.slice(0, 8);
+			var photo2 = photos.slice(8, 14);
+			var photo3 = photos.slice(14, 20);
+			var photo4 = photos.slice(20, 24);
+			var photo5 = photos.slice(24, 29);
+			var photo6 = photos.slice(29, 34);
+
+			console.log(photo1);
+			console.log(photo2);
+			var img1 = document.getElementById("img1");
+			var img2 = document.getElementById("img2");
+			var img3 = document.getElementById("img3");
+			var img4 = document.getElementById("img4");
+			var img5 = document.getElementById("img5");
+			var img6 = document.getElementById("img6");
+
+			window.setInterval("photosChange(img1,photo1)", 300);
+			window.setInterval("photosChange(img2,photo2)", 300);
+			window.setInterval("photosChange(img3,photo3)", 300);
+			window.setInterval("photosChange(img4,photo4)", 1000);
+			window.setInterval("photosChange(img5,photo5)", 500);
+			window.setInterval("photosChange(img6,photo6)", 500);
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>展开与收缩</title>
+		<script src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".flip").click(function() {
+					$(".panel").slideToggle("slow");
+				});
+			});
+		</script>
+
+		<style type="text/css">
+			div.panel,
+			div.flip {
+				margin: 0px;
+				padding: 5px;
+				text-align: center;
+				background: #e5eecc;
+				border: solid 1px #c3c3c3;
+			}
+			
+			div.panel {
+				height: 120px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+	<div class="panel">
+			<p>不好好读书</p>
+			<p>一天想这些东西。</p>
+		</div>
+
+		<div class="flip">点击查看美女果照</div>
+	
+	</body>
+
+</html>

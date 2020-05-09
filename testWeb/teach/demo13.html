@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的作用域</title>
+</head>
+<body>
+<script>
+
+    var a = 10;
+    var b = 40;
+
+    function fn() {
+        var b = 20;//b是在fn函数中定义的，那么它的作用域就在fn函数中，fn函数外不能使用
+        c = 30;//变量在没有写var来定义的时候，该变量就是全局变量（不允许这样写）
+        console.log(a);//10
+        console.log(b);//20
+    }
+
+    fn();
+    console.log("-----------------");
+
+    function fn1() {
+        console.log(a);//10
+        console.log(b);//40
+        console.log(c); //30
+    }
+    fn1();
+</script>
+
+</body>
+</html>

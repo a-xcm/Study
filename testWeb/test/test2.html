@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环练习题</title>
+</head>
+<body>
+    <script>
+        /**
+         *计算n的阶乘（n<=20）
+         */
+        var s = 1; //计算n的阶乘
+        var num = 20;
+        for(var n = 1; n <= num; n++){
+            s *=  n;
+        }
+        console.log(num+"的阶乘为：" + s);
+
+
+        /**
+         * 计算并输出1~n的阶乘之和（n<=20）
+         */
+        var s1 = 1; //计算阶乘
+        var sum = 0; //计算和
+        var num1 = 20;
+        for(var n = 1; n <= num1; n++){
+            s1 *= n;
+            sum += s1;
+        }
+        console.log("1~"+num+"的阶乘之和为：" + sum);
+
+        /**
+         * 计算1~n的自然数的平方和n<=20;
+         */
+        var sum1 = 0; //计算和
+        var num2 = 20;
+        for (var n =1; n <= num2; n++){
+            sum1 += n * n;
+        }
+        console.log("1~"+num+"的自然数的平方和为：" + sum1);
+
+        /**
+         * 打印1~100 的数，要求每10个数换行
+         */
+
+        var str = "";
+        for(var i = 1; i <= 100; i++){
+            str += i+"\t";
+            if(i %10 == 0){
+                str += "\n";
+            }
+        }
+        console.log(str);
+    </script>
+</body>
+</html>

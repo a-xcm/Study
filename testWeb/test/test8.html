@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom生成九九乘法表</title>
+</head>
+<body>
+
+<script>
+
+    var table = document.createElement("table");
+    for (var i = 1; i <= 9; i++) {
+        var tr = document.createElement("tr");
+        for (var j = 1; j <= i; j++) {
+            var str = "\t" + i + "*" + j + "=" + i * j;
+            var td = document.createElement("td");
+            td.innerHTML = str;
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
+    document.body.appendChild(table);
+</script>
+</body>
+</html>

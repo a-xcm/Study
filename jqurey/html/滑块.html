@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>滑块</title>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css" />
+	
+		<style type="text/css">td {
+	padding: 5px;
+	width: 100px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}</style>
+		
+		 <script>
+		 	$(function() {
+			$(".slider-wertical").slider({
+				orientation: "wertical",
+				range: "min",
+				min: 0,
+				max: 100,
+				value: 50,
+				slide: function(event, ui) {
+					$("#amount").val(ui.value);
+				}
+			});
+			$("#amount").val($(".slider-wertical").slider("value"));
+			$(".slider-vertical").slider({
+				orientation: "vertical",
+				range: "min",
+				min: 0,
+				max: 100,
+				value: 50,
+				slide: function(event, ui) {
+					$(".amount").val(ui.value);
+				}
+			});
+			$(".amount").val($(".slider-vertical").slider("value"));
+		});
+		
+	 </script>
+	</head>
+	
+	<body style="font-size: 13px;">
+		<table style="width:500px; border: 2px darkslateblue solid;">
+			<tr>
+				<td colspan="4" style="background: darkslateblue;color: white;">
+					主音量
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" style="font-size: 0.9empx;border-bottom:1px lightgray solid;">
+					<a href="#">选项(<span style="text-decoration: underline;">P</span>)</a>
+					&nbsp;&nbsp;
+					<a href="#">帮助(<span style="text-decoration: underline;">H</span>)</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-right: 1px lightgray solid;">主音量
+					<hr />
+				</td>
+				<td >波形<hr style="width: 110%;" /></td>
+				<td>软件合成器<hr style="width: 110%;"  /></td>
+				<td>CD&nbsp;唱机<hr style="width: 105%;"  /></td>
+			</tr>
+			<tr>
+				<td style="border-right: 1px lightgray solid;width: 33%;">
+				<p>
+					<label for="amount">平衡：</label>
+				</p>
+				
+					<div class="slider-wertical" style="width:100px;margin: auto;"></div>
+				</td>
+				<td style="border-right: 1px lightgray solid;width: 33%;">
+				<p>
+					<label for="amount">平衡：</label>
+				</p>
+				
+					<div class="slider-wertical" style="width:100px;margin: auto;"></div>
+				</td>
+				<td style="border-right: 1px lightgray solid;width: 33%;">
+				<p>
+					<label for="amount">平衡：</label>
+				</p>
+				
+					<div class="slider-wertical" style="width:100px;margin: auto;"></div>
+				</td>
+				<td >
+				<p>
+					<label for="amount">平衡：</label>
+				</p>
+				
+					<div class="slider-wertical" style="width:100px;margin: auto;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-right: 1px lightgray solid;">
+					<p>
+						<label for="amount" >音量：</label>
+		
+					</p>
+					<div class="slider-vertical" style="height:100px; margin: auto;"></div>
+				</td>
+				<td style="border-right: 1px lightgray solid;">
+					<p>
+						<label for="amount">音量：</label>
+					</p>
+					<div class="slider-vertical" style="height:100px; margin: auto;"></div>
+				</td>
+				<td style="border-right: 1px lightgray solid;">
+					<p>
+						<label for="amount">音量：</label>
+		
+					</p>
+					<div class="slider-vertical" style="height:100px; margin: auto;"></div>
+				</td>
+				<td >
+					<p>
+						<label for="amount">音量：</label>
+		
+					</p>
+					<div class="slider-vertical" style="height:100px; margin: auto;"></div>
+				</td>
+			</tr>
+			<tr> 
+				<td style="border-right: 1px lightgray solid;">
+					<input type="checkbox"/> <label>全部静音(M)</label>
+				</td>
+				<td style="border-right: 1px lightgray solid;">
+					<input type="checkbox"/> <label>静音(M)</label>
+				</td>
+				<td style="border-right: 1px lightgray solid;">
+					<input type="checkbox"/> <label>静音(M)</label>
+				</td>
+				<td style="border-right: 1px lightgray solid;">
+					<input type="checkbox"/> <label>静音(M)</label>
+				</td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

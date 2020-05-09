@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON对象</title>
+</head>
+<body>
+<script>
+    var person = {
+        "name": "谢陈鸣",
+        "age": 18,
+        "height": "160cm"
+    };
+    console.log(person);
+    /*
+    属性名称必须双引号引起来，（实际上事可以用单引号，但是严格的json是双引号）
+    除数字和布尔类型外，也必须用双引号引起来
+    每个属性一个Key/value键值对写法："属性名":"属性值"
+    每个键值对之间用英文逗号隔开
+     */
+
+
+    var list = [{
+        "name": "谢陈鸣",
+        "age": 20,
+        "height": "180cm"
+    }, {
+        "name": "谢陈鸣",
+        "age": 19,
+        "height": "170cm"
+    }];
+    console.log(list[0].age);
+
+
+    //把json对象与Java类  类比
+    var student = {
+        "name": "张三",
+        "age": 23,
+        eat: function (food) {
+            console.log(this.name + "在吃" + food);
+        }
+
+    };
+    student.eat("shi");
+
+    console.log(student.name);
+    console.log(student["name"]);
+
+
+    //json的转换/
+    /**
+     * 1.字符串转换为json对象
+     *2.json对象转换为字符串4
+     */
+    var str = "{\n" +
+        "        \"name\": \"张三\",\n" +
+        "        \"age\": 23\n" +
+        "    }";
+    //用eval方法转换为json对象
+    var obj = eval("(" + str + ")");
+    console.log(obj.name);
+
+    //实际上evel方法是不安全的，原则上建议不使用该方法转换
+    var obj2 = JSON.parse(str); //JSON这个对象只有较新的浏览器才能使用,只能转化简单json对象
+    console.log(obj2.name);
+//
+
+    console.log( JSON.stringify(student));
+</script>
+</body>
+</html>

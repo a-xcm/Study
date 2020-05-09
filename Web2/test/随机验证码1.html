@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        #code {
+            background: burlywood;
+            font-family: "Segoe Script";
+            width: 100px;
+            letter-spacing: 10px;
+            margin: 10px 0;
+        }
+        #input {
+            width: 100px;
+        }
+button{
+    font-size: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+<button id="code"></button>
+<button tyle="button" id="btn"/>更换验证码</button>
+<br/>
+<input type="text" id="input" placeholder=" 请输入验证码"/>
+<button type="button" id="validate">验证</button>
+
+<script>
+    var codeV = document.getElementById("code");
+    var btn = document.getElementById("btn");
+    var validate = document.getElementById("validate");
+    var input = document.getElementById("input");
+    btn.addEventListener("click", creatCode);
+    validate.addEventListener("click", validateD);
+    var code;
+
+    //创建随机验证码
+    function creatCode() {
+        code = "";
+        var codeChars = new Array(
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        var codeLength = 4;
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++) {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 62);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        codeV.innerHTML = code;
+    }
+
+    //判断验证
+    function validateD() {
+//input中的内容
+        var inputContent = input.value.toUpperCase();
+        //验证码的内容
+        var codeContent = codeV.innerHTML.toUpperCase();
+        if (inputContent == 0) {
+            alert("请输入验证码！！！");
+        } else if (inputContent != codeContent) {
+            alert("验证码错误！");
+            input.value = "";
+            creatCode();
+        } else {
+            alert("验证成功！")
+        }
+    }
+
+    //设置此处的原因是每次进入界面展示一个随机的验证码，不设置则为空
+    window.onload = function () {
+        creatCode();
+    }
+
+</script>
+
+</body>
+</html>

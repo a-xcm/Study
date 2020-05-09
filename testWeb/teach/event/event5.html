@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标跟随</title>
+    <style>
+        #pp{
+            position: fixed ;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+
+<p id="pp">我最帅</p>
+
+<script>
+    document.addEventListener("mousemove",function (ev) {
+        var top = ev.clientY;
+        var left = ev.clientX;
+
+        var p = document.getElementById("pp");
+        p.style.top=top-50+"px";
+        p.style.left=left-50+"px";
+    })
+</script>
+</body>
+
+</html>

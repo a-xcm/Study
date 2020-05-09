@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扑克</title>
+    <style>
+
+        img{
+            margin-left: -80px;
+        }
+        div{
+            width: 1000px;
+            margin:  auto 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="playerOne"> </div>
+<div id="playerTwo"> </div>
+<div id="playerThree"> </div>
+<div id="bottomCards"></div>
+</body>
+<script>
+    //用1——54的数组代表54张牌
+
+    function myCreateArray(n){
+
+        var arr = [];
+
+        for(var i = 0; i < n; i++){
+            arr[i] = i + 1;
+        }
+        return arr;
+    }
+
+
+
+    var cards = myCreateArray(54);
+
+    console.log('Get A Deck of Cards is: ' + cards);
+
+
+
+    //洗牌即是打乱数组顺序
+
+    function myShuffle(arr) {
+
+        var len = arr.length;
+
+        for (var i = 0; i < len - 1; i++) {
+            var index = parseInt(Math.random() * (len - i));
+            var temp = arr[index];
+            arr[index] = arr[len - i - 1];
+            arr[len - i - 1] = temp;
+        }
+
+    }
+
+
+
+     myShuffle(cards);
+
+    console.log('Get A Disordered Cards is: ' + cards);
+
+
+//发牌
+    function deal(div,a,array) {
+        for(var i = 0; i <a;i++){
+            var img = document.createElement("img");
+            img.src="imgs/poker/"+array[i]+"."+"jpg";
+            div.appendChild(img);
+        }
+    }
+
+    //玩家A,B,C各拿17张牌
+    var playerOne = document.getElementById("playerOne");
+    var playerA = cards.slice(0,17);
+    deal(playerOne,17,playerA);
+
+
+    console.log('playerA Has Cards: ' + playerA);
+
+
+    var playerTwo = document.getElementById("playerTwo")
+    var playerB = cards.slice(17,34);
+    deal(playerTwo,17,playerB);
+    console.log('playerB Has Cards: ' + playerB);
+
+
+    var playerThree = document.getElementById("playerThree")
+    var playerC = cards.slice(34,51);
+    deal(playerThree,17,playerC);
+    console.log('playerC Has Cards: ' + playerC);
+
+
+
+    //留下3张底牌
+    var bottomCard = document.getElementById("bottomCards");
+    var bottomCards = cards.slice(51,54);
+    deal(bottomCard,3,bottomCards);
+    console.log('Bottom Cards: ' + bottomCards);
+</script>
+</html>

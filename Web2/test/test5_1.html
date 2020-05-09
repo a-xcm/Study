@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>随机照片</title>
+		<style>
+			img {
+				width: 200px;
+				border-radius: 30%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table cellspacing="1" cellpadding="0">
+			<tr>
+				<th colspan="5"></th>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img src="imgs/photo/111.jpg" id="1" /></td>
+				<td></td>
+				<td><img src="imgs/photo/111.jpg" id="2" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><img src="imgs/photo/111.jpg" id="3" /></td>
+				<td><img src="imgs/photo/111.jpg" id="4" /></td>
+				<td><img src="imgs/photo/111.jpg" id="5" /></td>
+				<td><img src="imgs/photo/111.jpg" id="6" /></td>
+				<td><img src="imgs/photo/111.jpg" id="7" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img src="imgs/photo/111.jpg" id="8" /></td>
+				<td><img src="imgs/photo/111.jpg" id="9" /></td>
+				<td><img src="imgs/photo/111.jpg" id="10" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><img src="imgs/photo/111.jpg" id="11" /></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+		</table>
+
+	</body>
+
+	<script>
+		function photoNum(n) {
+			var num = new Array();
+			for(var i = 0; i < n; i++) {
+				num[i] = i + 111 + ".jpg";
+			}
+			return num;
+		}
+
+		function photosChange(img, photo) {
+			var u = photo[Math.floor(Math.random() * photo.length)];
+			img.src = "imgs/photo/" + u;
+		}
+
+		var photo = photoNum(4);
+		var photo1 = photo.slice(0, 2);
+		var photo2 = photo.slice(2, 4);
+		var img = document.getElementsByTagName("img");
+
+		function fn() {
+			for(var i = 0; i < img.length; i++) {
+
+				photosChange(img[i], photo);
+
+			}
+		}
+
+		window.setInterval("fn()", 500);
+	</script>
+
+</html>

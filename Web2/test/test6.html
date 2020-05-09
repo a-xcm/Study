@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习</title>
+		<script>
+			//反序输出
+			var str = "hello world!";
+			var s=str.split("").reverse().join("");
+			document.write(str);
+			document.write("反序："+s);
+			document.write("<br/>==================<br/>")
+			//5+10+15+.......+100的和
+			var sum = 0;
+			for(var i = 5;i<=100;i+=5){
+			sum += i;	
+			}
+			
+			document.write("5+10+15+.......+100的和："+sum);
+			document.write("<br/>==================<br/>")
+			//输入三个数按照大小顺序输出
+			
+			var arr = [22,21,17,33]
+			console.log(arr);
+			document.write(arr);
+			arr.sort(function(a,b){
+				return a-b;
+			});
+			document.write("小-大："+arr);
+			arr.reverse();
+			document.write("大-小："+arr);
+			document.write("<br/>==================<br/>")
+			//1~100累加值，跳过个位数为3的数
+			var sum1 = 0;
+			for(var  i = 1;i<=100;i++){
+				if(i % 10 !=3){
+					sum1 += i; 
+				}
+			}
+			document.write("1~100累加值，跳过个位数为3的数:"+sum1);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

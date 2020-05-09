@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+</head>
+<body>
+
+<ul id="ul">
+    <li>张三</li>
+    <li>赵小龙</li>
+    <li>王火山</li>
+    <li>我不懂</li>
+</ul>
+<script>
+
+    document.getElementById("ul").addEventListener("mouseover",function (ev) {
+        var arr1 =[randomNum(),randomNum(),randomNum()];
+        ev.target.style.background="rgb("+arr1.join(",")+")";
+
+        var arr2 =[randomNum(),randomNum(),randomNum()];
+        ev.target.style.color="rgb("+arr2.join(",")+")";
+    });
+    document.getElementById("ul").addEventListener("mouseout",function (ev) {
+        ev.target.style.background="";
+
+    });
+
+
+    function randomNum() {
+        return Math.round(Math.random()*255);
+    }
+    var li =document.createElement("li");
+    li.innerHTML = "谢陈鸣";
+    document.getElementById("ul").appendChild(li);
+</script>
+</body>
+</html>

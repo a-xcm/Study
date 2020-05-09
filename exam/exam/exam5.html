@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日历</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #data {
+            text-align: center;
+            padding: 5px;
+            width: 250px;
+            border: 1px solid cyan;
+            margin: 20px auto;
+            background-image:url("images/a.jpg") ;
+        }
+        ul {
+            letter-spacing: 8px;
+        }
+
+        ul li {
+            display: inline;
+            list-style: none;
+        }
+
+        #date {
+            width: 250px;
+            margin: auto;
+        }
+        td {
+            width: 30px;
+            height: 30px;
+            box-sizing: border-box;
+        }
+
+        td:hover {
+            border: 1px solid yellow;
+        }
+        table{
+            width: 250px;
+            margin: auto;
+        }
+     select{
+            width: 70px;
+            height: 20px;
+        }
+button{
+    width: 60px;
+    height: 25px;
+    background: snow;
+    font-size: 12px;
+    color:coral;
+}
+    </style>
+</head>
+<body>
+<div id="data">
+    <select name="year" id="year">
+        <option value="2019">2019年</option>
+        <option value="2018">2018年</option>
+        <option value="2017">2017年</option>
+        <option value="2016">2016年</option>
+        <option value="2015">2015年</option>
+        <option value="2014">2014年</option>
+        <option value="2013">2013年</option>
+        <option value="2012">2012年</option>
+        <option value="2011">2011年</option>
+        <option value="2010">2010年</option>
+        <option value="2009">2009年</option>
+        <option value="2008">2008年</option>
+    </select>
+
+    <select name="month" id="month">
+        <option value="0">1月</option>
+        <option value="1">2月</option>
+        <option value="2">3月</option>
+        <option value="3">4月</option>
+        <option value="4">5月</option>
+        <option value="5">6月</option>
+        <option value="6">7月</option>
+        <option value="7">8月</option>
+        <option value="8">9月</option>
+        <option value="9" >10月</option>
+        <option value="10">11月</option>
+        <option value="11">12月</option>
+    </select>
+    <button type="button" id="btn">回到今天</button>
+
+    <div id="date">
+
+    </div>
+
+</div>
+
+
+</div>
+<script>
+    var dateD = new Date();//当前时间
+    var yearD = dateD.getFullYear();//当前年
+    var monthD = dateD.getMonth();//当前月份
+    var dDate = dateD.getDate();//当前日期
+
+
+    var selectMonth = document.getElementById("month");
+    var selectYear = document.getElementById("year");
+    //选择年份后返回值
+    var setYear = function yearChange() {
+        var index = selectYear.selectedIndex;             // selectedIndex代表的是你所选中项的index
+        var yearSet = selectYear.options[index].value;//获取选取项的value值
+        //selectYear.options[index].text;//获取选中项文本内容
+
+        //判断是否点击了此按钮
+        document.onclick = function (e) {
+            var evt = e || window.event;
+            var tar = evt.target || evt.srcElement;
+            if ((tar.tagName.toLowerCase() == "buton" && tar.type == "button") || tar.tagName.toLowerCase() == "button") {
+                yearSet = yearD;
+            }
+        }
+        return yearSet;
+    }
+
+    //选择月份后返回值
+    var setMonth = function monthChange() {
+        var index = selectMonth.selectedIndex;             // selectedIndex代表的是你所选中项的index
+        var monthSet = selectMonth.options[index].value;
+        selectMonth.options[index].text;//内容
+
+        //判断是否点击了此按钮
+        document.onclick = function (e) {
+            var evt = e || window.event;
+            var tar = evt.target || evt.srcElement;
+            if ((tar.tagName.toLowerCase() == "buton" && tar.type == "button") || tar.tagName.toLowerCase() == "button") {
+                monthSet = monthD;
+            }
+        }
+        return monthSet;
+    }
+
+
+    //点击回到今天按钮事件
+    var btn = document.getElementById("btn");
+    btn.addEventListener("click", function () {
+        document.getElementsByName("month")[0].value = "" + monthD + "";
+        document.getElementsByName("year")[0].value = "" + yearD+ "";
+        fn();
+    });
+    //点击选择月份事件
+    selectMonth.addEventListener("click", function () {
+        fn();
+    });
+    //点击选择年份事件
+    selectYear.addEventListener("click", function () {
+        fn();
+    });
+
+
+//创建一个table
+    var table = document.createElement("table");
+    table.style.width = "250px";
+    table.style.margin = "auto";
+
+
+    //输出日历的方法
+    function fn() {
+
+        //设置一个改变的时间
+        var date1 = new Date();
+        date1.setFullYear(setYear());//选择的年份
+        date1.setMonth(setMonth());//选择的月份
+        date1.setDate(1);
+        var dayFirstWeek = date1.getDay();
+        var year = date1.getFullYear();
+        var month = date1.getMonth();
+        //取得该月最后一天
+        var dayLast = new Date(year, month + 1, 1 - 1);
+        //该月最后一天日期
+        var dayLastDate = dayLast.getDate();
+
+        //新建一个表示上月最后一天的日期
+        var lastMonth  = new Date(year,month,1-1);//上月的最后一天
+        var  lastMonthLastDate =lastMonth.getDate();//上月的最后一天的日期
+        var setLastDate = lastMonthLastDate-dayFirstWeek+1;//设置本月显示上月的日期
+       console.log(lastMonth);
+        //输出方法
+        var str = "";
+        str += "<tr>" +
+            "<th style='color: red'>日</th>" +
+            "<th>一</th>" +
+            "<th>二</th>" +
+            "<th>三</th>" +
+            "<th>四</th>" +
+            "<th>五</th>" +
+            "<th style='color: red'>六</th>" +
+            "</tr>";
+        var daycount = 1;
+        var rows = dayFirstWeek > 4 ? 6 : 5;
+        for (var i = 0; i < rows; i++) {
+            str += "<tr>";
+            for (var j = 0; j < 7; j++) {
+                if (i == 0) {
+                    for (j; j < dayFirstWeek; j++){
+                        str += "<td style='color: #cccccc'>"+setLastDate+"</td>";
+                        setLastDate++;
+                    }
+                }
+                for (daycount; daycount <= dayLastDate; daycount++) {
+                    date1.setDate(daycount);
+                    if (year == yearD && month == monthD && daycount == dDate) {//判断是否是今日
+                        str += "<td style='background: yellow;color: white'>" + daycount + "</td>";
+                    } else {
+                        if(date1.getDay() == 6 || date1.getDay() == 0){
+                            str += "<td style='color: red'>" + daycount + "</td>";
+                        }else {
+                            str += "<td>" + daycount + "</td>";
+                        }
+
+                    }
+
+                    if (date1.getDay() == 6) {
+                        break;
+                    }
+                    j++;
+                }
+            }
+            daycount = daycount + 1;
+            str += "</tr>";
+        }
+        table.innerHTML = str;
+
+    }
+
+    //第一次加载默认当前时间
+    console.log(dateD);
+    document.getElementsByName("month")[0].value = "" + monthD + "";
+    document.getElementsByName("year")[0].value = "" + yearD+ "";
+    fn();
+    document.getElementById("date").appendChild(table);
+
+
+</script>
+
+
+</body>
+</html>

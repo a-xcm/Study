@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>算术运算符</title>
+</head>
+<body>
+
+        <script>
+
+            var a = 8;
+            var b = 4;
+
+            console.log(a + b); // 12
+            console.log(a - b); // 4
+            console.log(a * b); // 32
+            console.log(a / b); // 2
+            console.log(b / a); // 0.5
+
+            //取余只能用于整数
+            console.log(a % b); // 0
+            console.log(b % a); // 4
+
+            //注意：++、--只能运用于整数
+            console.log("---------");
+            console.log(a++); // 8 先打印后自增
+            console.log(a); // 9
+            console.log(a--);// 9 先打印后自增
+            console.log(a); // 8
+
+            console.log("---------");
+            console.log(++a); // 9 先自增后打印
+            console.log(a); // 9
+            console.log(--a); // 8 先自减后打印
+            console.log(a); // 8
+
+        </script>
+</body>
+</html>

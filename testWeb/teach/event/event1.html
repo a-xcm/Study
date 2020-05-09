@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onload事件</title>
+    <style>
+        .div1 {
+            width: 300px;
+            height: 400px;
+            background-color: cyan;
+        }
+    </style>
+</head>
+<!--
+onload事件body和img标签可以加
+onload事件表示在当前标签加载完毕后触发
+-->
+<body onload="triggerLoad();">
+<!--html 文档流从上到下依次执行-->
+<script>
+    function triggerLoad() {
+        document.getElementById("div1").innerHTML="<p>这是一个段落</p>";
+    }
+</script>
+
+<div id="div1" class="div1"></div>
+
+</body>
+</html>

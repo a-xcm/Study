@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for指令</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul v-for=" item in items">
+				{{item.text}}
+			</ul>	
+		</div>
+	</body>
+	
+	<script>
+		
+		new Vue({
+			el:'#app',
+			data:{
+				items:[
+					{text:'朱雀桥边野草花'},
+					{text:'乌衣巷口夕阳斜'},
+					{text:'旧时王谢堂前燕'},
+					{text:'飞入寻常百姓家'},
+					{text:'——刘禹锡·《乌衣巷'}
+			]
+				
+			}
+			
+		});
+	</script>
+	
+</html>

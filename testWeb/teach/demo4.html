@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比较运算符</title>
+</head>
+<body>
+    <script>
+
+        //逻辑运算符的运算结果一定是布尔类型 true  false
+        var a = 4;
+        var b = 8;
+        var c = 4;
+        var d = '4';
+        console.log(a == b); //false 数值不一样
+        console.log(a == c); //true  数值不一样
+        console.log(a === c); //true 数值类型都一样
+        console.log(a == d); //true 数值一样
+        console.log(a === d); //false 数值一样 类型一个是Number 一个是String 不一样
+
+        /**
+         * ==：表示判断两个变量是否相等
+         * ===：表示判断两个变量值和类型都相等
+         */
+
+        console.log(a + d); // 44
+        console.log(a + parseInt(d)); // 8
+    </script>
+</body>
+</html>

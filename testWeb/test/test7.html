@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String练习</title>
+</head>
+<body>
+<script>
+    (function () {
+        //J将字符串按照单词进行逆序，如HelloWorld输出dlroWolleH
+        var str1 = "HelloWorld";
+        // console.log(str1[1]);//e
+        var arr1 = str1.split("");
+        arr1.reverse();
+        console.log(arr1.join(""));
+        //将字符串html5 css3 java mysq oracle每个单词的首字母大写并输出
+        var str2 = "html5 css3 java mysq oracle js";
+        function everyUpperCase(str) {
+            var str_arr = str.split("");
+            str_arr[0] = str_arr[0].toUpperCase();
+            for (var i = 0; i < str_arr.length - 1; ++i) {
+                if (str_arr[i] == " ") {
+                    str_arr[i + 1] = str_arr[i + 1].toUpperCase();
+                }
+            }
+            return str_arr.join("");
+        }
+
+        console.log(everyUpperCase(str2));
+
+        // 计算字符串" Hello12 JavaSCRipt33Sring55中所有教字的和
+        function strNumSum(str) {
+            var arr = str.match(/\d+/g);
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum += parseInt(arr[i]);
+            }
+            return sum;
+        }
+
+        var str3 = "Hello12JavaSCRipt33Sring55";
+        console.log(strNumSum(str3));
+        //有字符串var str=" abc345efgabcab"请出3条js语句分别实现如下3个城:.
+        // 1)去掉字符串中的a. b. c(字符,形成结果: "345efg"
+        // .2)将字符串中的数字用中括号括起来形成结果 ”abc[3][4][5]efgabcab“
+        // 3)将字符串中每个数字的值分别以2，形成结果"abc6810efgabcab"
+        var str = "abc345efgabcab";
+        console.log(str.replace(/[abc]/g, ""));
+        console.log(str.replace(/[0-9]/g, "[$&]"));
+        console.log(str.replace(/[0-9]/g, function (value) {
+            return value * 2;
+        }));
+
+        /*
+        有这样一个 URL：http://vip.qq.com/a.php?a=1&b=2&c=&d=xxx&e，请写一段 JS 程序提取 URL 中的各个参数
+（参数名和参数个数不确定），将其按 key-value 形式返回到一个 json 结构中，
+如{a:'1',b:'2',c:'',d:'xxx',e:undefined}。
+         */
+        function retrieveParameters(url) {
+            var result = {};
+            var pattern = /[?|&](\w+)(=)?(\w*)/g;
+            var pattern_result = pattern.exec(url);
+            while (pattern_result) {
+                if (pattern_result[2]) {
+                    result[pattern_result[1]] = pattern_result[3];
+                } else {
+                    result[pattern_result[1]] = undefined;
+                }
+                pattern_result = pattern.exec(url);
+            }
+            return result;
+        }
+
+        var str1 = "http://vip.qq.com/a.php?a=1&b=2&c=&d=xxx&e";
+        console.log(retrieveParameters(str1));
+        var paramStr = str1.split("?")[1];
+        var paramArr = paramStr.split("&");
+        for (var i = 0;i<paramArr.length;i++){
+            var a = paramArr[i].split("=");
+            console.log(a[0]+":"+a[1]);
+        }
+    })();
+</script>
+</body>
+</html>

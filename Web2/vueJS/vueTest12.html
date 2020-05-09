@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>用户注册表</title>
+		<script src="vue.js"></script>
+		<style type="text/css">
+			#app{
+				width: 400px;
+				border:1px solid black;
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<table>
+				<tr>
+					<th colspan="2">
+						<p>用户注册</p>
+					</th>
+				</tr>
+				<tr>
+					<td><label> 用户名</label></td>
+					<td><input type="text" v-model="message" /></td>
+				</tr>
+
+				<tr>
+					<td><label>密码</label></td>
+					<td><input type="password" v-model="passwords" /> </td>
+				</tr>
+
+				<tr>
+					<td><label>年级</label></td>
+					<td>
+						<label> <input type="radio" v-model="radioed" value="大一" /> 大一</label>
+						<label> <input type="radio" v-model="radioed" value="大二" /> 大二</label>
+						<label> <input type="radio" v-model="radioed" value="大三" /> 大三</label>
+					</td>
+				</tr>
+
+				<tr>
+					<td> <label>个人介绍</label></td>
+					<td> <textarea cols="30" rows="10" v-model="texte"></textarea></td>
+				</tr>
+
+				<tr>
+					<td><label>籍贯</label></td>
+					<td>
+						<select v-model="selected">
+							<option>北京</option>
+							<option>上海</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td>
+						<button v-on:click="showon">注册</button>
+						<input type="button" v-on:click="resver"  value="清空" />
+					</td>
+				</tr>
+			</table>
+
+			<p>你注册的个人信息为:</p>
+			<p>用户名：<span v-show="isshow">{{message}}</span></p>
+			<p>年级：<span v-show="isshow">{{radioed}}</span></p>
+			<p>个人介绍：<span v-show="isshow">{{texte}}</span></p>
+			<p>籍贯：<span v-show="isshow">{{selected}}</span></p>
+
+		</div>
+	</body>
+
+	<script>
+		var vm = new Vue({
+			el: '#app',
+
+			data: {
+				message: '',
+				passwords: '',
+				radioed: '',
+				texte: '',
+				selected: '',
+				isshow: false,
+			},
+			 created:function(){
+        this.defaultData = JSON.parse(JSON.stringify(this.$data));
+    },
+
+			methods: {
+				showon: function() {
+					this.isshow = true;
+				},
+				resver: function() {
+					this.$data = Object.assign(this.$data, this.defaultData);
+
+				}
+			}
+		})
+	</script>
+
+</html>
